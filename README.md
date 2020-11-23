@@ -1,9 +1,8 @@
-#Objectif : concevoir un système de transactions électroniques avec une intégrité garantie, accessible
-par le protocole HTTP.
+# Objectif : concevoir un système de transactions électroniques avec une intégrité garantie, accessible par le protocole HTTP.
 
 Mode du travail préférée : binômes, **ainsi nous avons decidé de travailler en binôme**
 - Sidi TOURÉ
--Eric Landry Kotto-Dipanda
+- Eric Landry Kotto-Dipanda
 
 et cela pour les deux projets:
 1. système d'information avancée ==> qui est sur ce git
