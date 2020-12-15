@@ -16,3 +16,26 @@ transactions ressemblant à celui de la blockchain et git.
 - Sidi TOURé [Sidi_Toure@etu.u-bourgogne.fr](Sidi_Toure@etu.u-bourgogne.fr)
 
 ============= fini la version 0 du projet à ce niveau==============
+
+============= debut la version 1 ==============
+## Exercice 3
+### A1-) fonction d'enregistrement
+#### cette fonction est declenché avec l'exemple de script :
+- curl -d '{"personne1": "steve", "personne2": "keita", "montant":"27"}' -H "Content-Type: application/json" -X POST   http://0.0.0.0:898/save
+
+### A2-) affichage liste transactions :
+- lancer le lien http://0.0.0.0:8981/listesTransactions
+
+### A3-) Afficher une liste des transactions dans l’ordre chronologique liées à une personne donnée  (Natalie par exemple)
+- lancer le lien http://0.0.0.0:8981/mes_transactions/Natalie
+
+### A4-) Afficher le solde du compte de la personne donnée (Natalie par exemple).
+- lancer le lien http://0.0.0.0:8981/mes_soldes/Natalie
+
+NB: le lien http://0.0.0.0:8981/ utilisé pour chaque script ou url de teste depend de celui par lequel votre machine a lancer le code, le numero du port doit correspondre à celui avec lequel vous avez lancé votre code
+
+## Exercice 4
+### fonction d'attaque, exemple de script a lancer pour declencher la methode dans notre code à cet effet
+- curl -d '{"personne1": "steve", "personne2": "keita", "montant":"10"}' -H "Content-Type: application/json" -X POST   http://0.0.0.0:8981/attaque
+
+message retourner si ça marche ==> "sommes tansactions are attaqued."
