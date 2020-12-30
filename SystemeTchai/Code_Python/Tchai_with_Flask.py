@@ -64,7 +64,14 @@ def add():
     send.append(data["personne2"])
     send.append(data["montant"])
     send.append(date_time)
-    h = hashlib.sha224(",".join(send)).hexdigest()
+    transaction = []
+    with open('./SystemeTchai/Data_Base/transactions.csv') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter='|')
+        for row in spamreader:
+            transaction = row
+        print(transaction)
+        hi = transaction[4]
+    h = hashlib.sha224(",".join(send) + hi).hexdigest()
     send.append(h)
     ##a prendre en compte que la direction ci dessous particulier au pc 
     with open('./SystemeTchai/Data_Base/transactions.csv', 'a') as csvfile:
@@ -158,12 +165,14 @@ def integrite():
         spamreader = csv.reader(csvfile, delimiter='|')
         for row in spamreader:
             if row[0]=='personne1' :
+                hi = row[4]
                 continue
 
             
-            h = hashlib.sha224( ",".join(row[0:4])).hexdigest()
+            h = hashlib.sha224( ",".join(row[0:4]) + hi).hexdigest()
             if h != row[4] :
                 data = "incorrect"
+            hi = row[4]
 
 
     return 'les donnees sont actuellemnt ' + str(data), 200

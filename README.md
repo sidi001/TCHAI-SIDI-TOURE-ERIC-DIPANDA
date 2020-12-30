@@ -21,7 +21,7 @@ transactions ressemblant à celui de la blockchain et git.
 ## Exercice 3
 ### A1-) fonction d'enregistrement
 #### cette fonction est declenché avec l'exemple de script :
-- curl -d '{"personne1": "steve", "personne2": "keita", "montant":"27"}' -H "Content-Type: application/json" -X POST   http://0.0.0.0:898/save
+- curl -d '{"personne1": "Robert", "personne2": "Natalie", "montant":"20"}' -H "Content-Type: application/json" -X POST   http://0.0.0.0:898/save
 
 ### A2-) affichage liste transactions :
 - lancer le lien http://0.0.0.0:8981/listesTransactions
@@ -51,7 +51,7 @@ message retourner si ça marche ==> "sommes tansactions are attaqued."
 ### Modifier votre programme afin d’intégrer la nouvelle structure des transactions (P1, P2, t, a).
 - on mettra à la place du "a", le hash SHA224 defini precedemment
 
-## Exercice 5
+## Exercice 6
 ### Vérifier l’intégrité des données en recalculant les hashs à partir des données et en les comparant avec les hashs stockés précédemment.
 - pour cela, on a mis en place un API accessible avec l'url : http://0.0.0.0:8981/integrite 
 - cette api retourne une phrse nous confirmant que notre database est bien correcte, ainsi on pourra conclure sur l'integrité en même temps.
@@ -62,3 +62,22 @@ message retourner si ça marche ==> "sommes tansactions are attaqued."
 - curl -d '{"personne1": "Robert", "personne2": "Natalie", "montant":"29"}' -H "Content-Type: application/json" -X POST   http://0.0.0.0:898/supprimer
 
 ============= fini la version 2 du projet à ce niveau==============
+
+============== debut version 3 de Tchai ===========
+
+## Exercice 9
+Modifier la méthode de calcul de hash. Maintenant la valeur du hash hi+1 pour que ça depende aussi du hi de la transaction
+précédente. 
+   - pour cela, on prendra juste en compte à chaque ajout, le calcule du hash est fait en utilisant la dernière transaction ajoutée
+
+## Exercice 10
+Pour Vérifier que les attaques précédentes ne fonctionnent plus, on verifie l'integrité des données (le code doit être d'abord modifié pour prendre en compte la façon de calcul du hash).
+    - on remarque bien que la suppression d'une ligne declenche une alerte de type données incorrect dans notre database
+
+## Exercice 11
+ cette question est vite repondu car on peut déjà ajouter des transactions dans les données sans verification par déjà la méthode d'ajout qui a été ajouté dans le code à la question A1 de l'exercice 3-).
+
+ ============= fini la version 3 du projet à ce niveau==============
+
+ ## Exercice 12
+
