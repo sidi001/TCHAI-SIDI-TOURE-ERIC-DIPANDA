@@ -79,5 +79,19 @@ Pour Vérifier que les attaques précédentes ne fonctionnent plus, on verifie l
 
  ============= fini la version 3 du projet à ce niveau==============
 
- ## Exercice 12
+ ============== debut version 3 de Tchai ===========
 
+ ## Exercice 12
+    Lire le message [4], le papier original de Satoshi Nakamoto [5] et la discussion ultérieure
+sur la liste de diffusion ‘The Cryptography and Cryptography Policy Mailing List”.
+
+## Exercice 13 : crytography asymetrique, crypto.signature
+    -  Utiliser la cryptographie asymétrique afin d’assurer l’authenticité de l’expéditeur.
+    - pour cela, on a utilisé la bibliothèque pyCrypto de python. PyCryptodome est un package Python autonome de primitives cryptographiques de bas niveau. cela permet de d'envoyer un message signé avec une signature générée avec une clé privée, puis on envoie le message vers le server avec la signature pour proceder à une verification.
+#### Procedure pour tester :
+1. exécuter le code python generateRsa.py afin de générer les clés privées et public qui seront stocker dans des fichier ".pem". 
+2. on peut lancer le code python testerCrypto.py pour juste savoir est ce que le model de crypto asymetrique qu'on utilise est correct.
+3. Ensuite on peut lancer le code clientSender.py qui se chargera de signer un message qu'on veut envoyer en mettant la signature dans fichier de stockage et lance un script de type  "curl -d '{"signPath":"signature.pem", "datatest":"alors tu veux un message pour tester la signature"}' -H 'Content-Type: application/json'  -X POST http://0.0.0.0:898/signVerification" dont signPath contient le chemin vers la signature et datatest contient le message même.
+4. ce script nous retourne "les donnees envoyees sont bien verifiees" si le message n'a pas été modifier avant la verification, donc sur le chemin de l'envoie et retourne "les donnees sont faux" sinon
+
+ ============= fini la version 4 du projet à ce niveau==============

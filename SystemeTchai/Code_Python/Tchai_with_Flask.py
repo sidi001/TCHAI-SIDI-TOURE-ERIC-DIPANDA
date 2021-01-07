@@ -4,9 +4,9 @@ import pandas as pd
 from datetime import datetime
 import hashlib
 
-# import os
-# path = os.getcwd()
-# print(path)
+import os
+path = os.getcwd()
+print(path)
 
 app = Flask(__name__)
 # transactions = ['Zorro','sidi','h']
@@ -176,6 +176,38 @@ def integrite():
 
 
     return 'les donnees sont actuellemnt ' + str(data), 200
+
+
+@app.route('/signVerification', methods=['POST'])
+def verifier_signature():
+    '''
+    Verifier avec le public key a partir d'où vient la signature cela permet d'avoir une coherence avec le private key
+    Postjson param: public_key_loc est chemin du public key
+    Postjson param: signature String signature to be verified
+    return: message."les donnees envoyees sont bien verifiees" si la signature est valid; "les donnees sont faux" sinon. 
+    '''
+
+    public_key_loc = path + "/public_key.pem"
+
+    data = request.get_json()
+    signPath =  path + str(data["signPath"])
+    sign = open(signPath, "r").read() 
+    dataSended = str(data["datatest"])
+    
+    from Crypto.PublicKey import RSA 
+    from Crypto.Signature import PKCS1_v1_5 
+    from Crypto.Hash import SHA256 
+    from base64 import b64decode 
+    pub_key = open(public_key_loc, "r").read() 
+    rsakey = RSA.importKey(pub_key) 
+    signer = PKCS1_v1_5.new(rsakey) 
+    digest = SHA256.new() 
+    # if Assumes the data is base64 encoded to begin with
+    #digest.update(b64decode(data)) 
+    digest.update(dataSended) 
+    if signer.verify(digest, b64decode(sign)):
+        return "les donnees envoyees sont bien verifiees"
+    return "les donnees sont faux"
 
 
 
