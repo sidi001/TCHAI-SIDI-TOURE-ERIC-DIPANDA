@@ -17,8 +17,8 @@ transactions = []
 def hello():
     transactions = []
     with open('./SystemeTchai/Data_Base/transactions.csv') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter='|')
-        for row in spamreader:
+        dB = csv.reader(csvfile, delimiter='|')
+        for row in dB:
             # if row[0]=='personne1' :
             #     continue
 
@@ -33,8 +33,8 @@ def hello():
 def listesTransactions():
     transactions = []
     with open('./SystemeTchai/Data_Base/transactions.csv') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter='|')
-        for row in spamreader:
+        dB = csv.reader(csvfile, delimiter='|')
+        for row in dB:
             # if row[0]=='personne1' :
             #     continue
 
@@ -66,8 +66,8 @@ def add():
     send.append(date_time)
     transaction = []
     with open('./SystemeTchai/Data_Base/transactions.csv') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter='|')
-        for row in spamreader:
+        dB = csv.reader(csvfile, delimiter='|')
+        for row in dB:
             transaction = row
         print(transaction)
         hi = transaction[4]
@@ -110,8 +110,8 @@ def supprimer():
     transactions = []
     data = request.get_json()
     with open('./SystemeTchai/Data_Base/transactions.csv') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter='|')
-        for row in spamreader:
+        dB = csv.reader(csvfile, delimiter='|')
+        for row in dB:
             if row[0]=='personne1' :
                  continue
             
@@ -133,8 +133,8 @@ def supprimer():
 def mes_transactions(uname):
     transactions = []
     with open('./SystemeTchai/Data_Base/transactions.csv') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter='|')
-        for row in spamreader:
+        dB = csv.reader(csvfile, delimiter='|')
+        for row in dB:
             if row[0]==uname :
                 transactions.append(row)
             print(transactions)
@@ -147,8 +147,8 @@ def mes_transactions(uname):
 def mes_soldes(uname):
     solde = 0
     with open('./SystemeTchai/Data_Base/transactions.csv') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter='|')
-        for row in spamreader:
+        dB = csv.reader(csvfile, delimiter='|')
+        for row in dB:
             if row[0]==uname :
                 solde -= int(row[2])
             if row[1]==uname :
@@ -162,8 +162,8 @@ def mes_soldes(uname):
 def integrite():
     data = "correct"
     with open('./SystemeTchai/Data_Base/transactions.csv') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter='|')
-        for row in spamreader:
+        dB = csv.reader(csvfile, delimiter='|')
+        for row in dB:
             if row[0]=='personne1' :
                 hi = row[4]
                 continue

@@ -10,6 +10,7 @@ et cela pour les deux projets:
 
 Après avoir terminé tous les exercices, nous devrons obtenir un système de gestion des
 transactions ressemblant à celui de la blockchain et git.
+Environnement python, conda 3.7
 
 ## Auteurs
 - EricLandry Kotto Dipanda [eric-landry_kotto-dipanda@etu.u-bourgogne.fr](eric-landry_kotto-dipanda@etu.u-bourgogne.fr)
