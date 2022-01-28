@@ -1,98 +1,86 @@
-# Objectif : concevoir un système de transactions électroniques avec une intégrité garantie, accessible par le protocole HTTP.
+# Goal: design an electronic transaction system with guaranteed integrity, accessible via the HTTP protocol.
 
-Mode du travail préférée : binômes, **ainsi nous avons decidé de travailler en binôme**
-- Sidi TOURÉ
+Favorite way of working: pairs, **so we decided to work in pairs**
+- Sidi TOURE
 - Eric Landry Kotto-Dipanda
 
-et cela pour les deux projets:
-1. système d'information avancée ==> __qui est sur ce git__
-2. Big Data qui se trouve sur le git de ce lien ==> [BigDataPrjet](https://github.com/sidi001/Projet_BigData_LandryDipanda_SidiToure)
+and this for both projects:
+1. advanced system info ==> __who is on this git__
+2. Big Data which is on the git of this link ==> [BigDataProjet](https://github.com/sidi001/Projet_BigData_LandryDipanda_SidiToure)
 
-Après avoir terminé tous les exercices, nous devrons obtenir un système de gestion des
-transactions ressemblant à celui de la blockchain et git.
-Environnement python, conda 3.7
+After completing all the exercises, we will need to obtain a management system for
+transactions resembling that of blockchain and git.
+Python environment, conda 3.7
 
-## Auteurs
-- EricLandry Kotto Dipanda [eric-landry_kotto-dipanda@etu.u-bourgogne.fr](eric-landry_kotto-dipanda@etu.u-bourgogne.fr)
+## Authors
+- Eric Landry Kotto Dipanda [eric-landry_kotto-dipanda@etu.u-bourgogne.fr](eric-landry_kotto-dipanda@etu.u-bourgogne.fr)
 - Sidi TOURé [Sidi_Toure@etu.u-bourgogne.fr](Sidi_Toure@etu.u-bourgogne.fr)
 
-============= fini la version 0 du projet à ce niveau==============
+============= finished version 0 of the project at this level==============
 
-============= debut la version 1 ==============
-## Exercice 3
-### A1-) fonction d'enregistrement
-#### cette fonction est declenché avec l'exemple de script :
-- curl -d '{"personne1": "Robert", "personne2": "Natalie", "montant":"20"}' -H "Content-Type: application/json" -X POST   http://0.0.0.0:898/save
+============= debut version 1 ==============
+## Exercise 3
+### A1-) recording function
+#### this function is triggered with the sample script:
+- curl -d '{"person1": "Robert", "person2": "Natalie", "amount":"20"}' -H "Content-Type: application/json" -X POST http://0.0 .0.0:898/save
 
-### A2-) affichage liste transactions :
-- lancer le lien http://0.0.0.0:8981/listesTransactions
+### A2-) transaction list display:
+- click on thelink: http://0.0.0.0:8981/listesTransactions
 
-### A3-) Afficher une liste des transactions dans l’ordre chronologique liées à une personne donnée  (Natalie par exemple)
-- lancer le lien http://0.0.0.0:8981/mes_transactions/Natalie
+### A3-) Display a list of transactions in chronological order related to a given person (Natalie for example)
+- click on the link http://0.0.0.0:8981/mes_transactions/Natalie
 
-### A4-) Afficher le solde du compte de la personne donnée (Natalie par exemple).
-- lancer le lien http://0.0.0.0:8981/mes_soldes/Natalie
+### A4-) Display the account balance of the given person (Natalie for example).
+- click on the link http://0.0.0.0:8981/mes_soldes/Natalie
 
-NB: le lien http://0.0.0.0:8981/ utilisé pour chaque script ou url de teste depend de celui par lequel votre machine a lancer le code, le numero du port doit correspondre à celui avec lequel vous avez lancé votre code
+NB: the link http://0.0.0.0:8981/ used for each script or test url depends on the one through which your machine launched the code, the port number must correspond to the one with which you launched your code
 
-## Exercice 4
-### fonction d'attaque, exemple de script a lancer pour declencher la methode dans notre code à cet effet
-- curl -d '{"personne1": "steve", "personne2": "keita", "montant":"10"}' -H "Content-Type: application/json" -X POST   http://0.0.0.0:8981/attaque
+## Exercise 4
+### attack function, example of script to launch to trigger the method in our code for this purpose
+- curl -d '{"person1": "steve", "person2": "keita", "amount":"10"}' -H "Content-Type: application/json" -X POST http://0.0 .0.0:8981/attack
 
-message retourner si ça marche ==> "sommes tansactions are attaqued."
+message return if it works ==> "sums transactions are attacked."
 
-============= fini la version 1 du projet à ce niveau==============
+============= finished version 1 of the project at this level==============
 
-============== debut version 2 de Tchai ===========
-- choix fonction de Hachage:
-    SHA-2 est une famille de fonctions de hachage qui ont été conçues par la National Security Agency des États-Unis, sur le modèle des fonctions SHA-1 et SHA-0, elles-mêmes fortement inspirées de la fonction MD4 de Ron Rivest (qui a donné parallèlement MD5).
-    Dans le code, on utilisera le sha224 car il est le plus simple des autres SHA-2 avec la taille du haché est indiquée par le suffixe : 224 bits pour SHA-224
+============== debut version 2 of Tchai ===========
+- choice of Hash function:
+    SHA-2 is a family of hash functions that were designed by the United States National Security Agency, modeled after the SHA-1 and SHA-0 functions, themselves heavily inspired by Ron Rivest's MD4 function ( which gave parallel MD5).
+    In the code, we will use sha224 because it is the simplest of the other SHA-2s with the size of the hash indicated by the suffix: 224 bits for SHA-224
 
-## Exercice 5
-### Modifier votre programme afin d’intégrer la nouvelle structure des transactions (P1, P2, t, a).
-- on mettra à la place du "a", le hash SHA224 defini precedemment
+## Exercise 5
+### Modify your program to incorporate the new transaction structure (P1, P2, t, a).
+- we will put in place of the "a", the SHA224 hash defined previously
 
-## Exercice 6
-### Vérifier l’intégrité des données en recalculant les hashs à partir des données et en les comparant avec les hashs stockés précédemment.
-- pour cela, on a mis en place un API accessible avec l'url : http://0.0.0.0:8981/integrite 
-- cette api retourne une phrse nous confirmant que notre database est bien correcte, ainsi on pourra conclure sur l'integrité en même temps.
+## Exercise 6
+### Verify data integrity by recalculating hashes from data and comparing them with previously stored hashes.
+- for this, we have set up an API accessible with the url: http://0.0.0.0:8981/integrite
+- this API returns a sentence confirming that our database is correct, so we can conclude on the integrity at the same time.
 
-## EXERCICE 7. on verifie bien que l’attaque précédente ne fonctionne plus. car le test d'integrité retourne que les données sont incorrect après les modification
+## EXERCISE 7. we check that the previous attack no longer works. because the integrity test returns that the data is incorrect after the modifications
 
-## EXERCICE 8. Attaquer le système en modifiant directement le fichier de données, en supprimant unetransaction. 
-- curl -d '{"personne1": "Robert", "personne2": "Natalie", "montant":"29"}' -H "Content-Type: application/json" -X POST   http://0.0.0.0:898/supprimer
+## EXERCISE 8. Attack the system by directly modifying the data file, by deleting a transaction.
+- curl -d '{"person1": "Robert", "person2": "Natalie", "amount":"29"}' -H "Content-Type: application/json" -X POST http://0.0 .0.0:898/delete
+============= finished version 2 of the project at this level==============
 
-============= fini la version 2 du projet à ce niveau==============
+============== early version 3 of Tchai ==========
 
-============== debut version 3 de Tchai ===========
+## Exercise 9
+Change the hash calculation method. Now the value of the hash hi+1 so that it also depends on the hi of the transaction
+former.
+   - for this, we will just take into account each addition, the calculation of the hash is done using the last transaction added
 
-## Exercice 9
-Modifier la méthode de calcul de hash. Maintenant la valeur du hash hi+1 pour que ça depende aussi du hi de la transaction
-précédente. 
-   - pour cela, on prendra juste en compte à chaque ajout, le calcule du hash est fait en utilisant la dernière transaction ajoutée
+## Exercise 10
+To verify that the previous attacks no longer work, we check the integrity of the data (the code must first be modified to take into account the way the hash is calculated).
+    - we notice that the deletion of a line triggers an incorrect data type alert in our database
 
-## Exercice 10
-Pour Vérifier que les attaques précédentes ne fonctionnent plus, on verifie l'integrité des données (le code doit être d'abord modifié pour prendre en compte la façon de calcul du hash).
-    - on remarque bien que la suppression d'une ligne declenche une alerte de type données incorrect dans notre database
+## Exercise 11
+ this question is quickly answered because we can already add transactions in the data without verification by already adding the method that was added in the code to question A1 of exercise 3-).
 
-## Exercice 11
- cette question est vite repondu car on peut déjà ajouter des transactions dans les données sans verification par déjà la méthode d'ajout qui a été ajouté dans le code à la question A1 de l'exercice 3-).
+ ============= finished version 3 of the project at this level==============
 
- ============= fini la version 3 du projet à ce niveau==============
+ ============== early version 3 of Tchai ===========
 
- ============== debut version 3 de Tchai ===========
-
- ## Exercice 12
-    Lire le message [4], le papier original de Satoshi Nakamoto [5] et la discussion ultérieure
-sur la liste de diffusion ‘The Cryptography and Cryptography Policy Mailing List”.
-
-## Exercice 13 : crytography asymetrique, crypto.signature
-    -  Utiliser la cryptographie asymétrique afin d’assurer l’authenticité de l’expéditeur.
-    - pour cela, on a utilisé la bibliothèque pyCrypto de python. PyCryptodome est un package Python autonome de primitives cryptographiques de bas niveau. cela permet de d'envoyer un message signé avec une signature générée avec une clé privée, puis on envoie le message vers le server avec la signature pour proceder à une verification.
-#### Procedure pour tester :
-1. exécuter le code python generateRsa.py afin de générer les clés privées et public qui seront stocker dans des fichier ".pem". 
-2. on peut lancer le code python testerCrypto.py pour juste savoir est ce que le model de crypto asymetrique qu'on utilise est correct.
-3. Ensuite on peut lancer le code clientSender.py qui se chargera de signer un message qu'on veut envoyer en mettant la signature dans fichier de stockage et lance un script de type  "curl -d '{"signPath":"signature.pem", "datatest":"alors tu veux un message pour tester la signature"}' -H 'Content-Type: application/json'  -X POST http://0.0.0.0:898/signVerification" dont signPath contient le chemin vers la signature et datatest contient le message même.
-4. ce script nous retourne "les donnees envoyees sont bien verifiees" si le message n'a pas été modifier avant la verification, donc sur le chemin de l'envoie et retourne "les donnees sont faux" sinon
-
- ============= fini la version 4 du projet à ce niveau==============
+ ## Exercise 12
+    Read message [4], original paper by Satoshi Nakamoto [5] and subsequent discussion
+on the diff list
